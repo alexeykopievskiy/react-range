@@ -16,10 +16,10 @@ export default class App extends React.Component {
     };
   }
 
-  handleValuesChange(componentName) {
+  handleValuesChange(componentName, componentType) {
     return (component, value) => {
       const state = {}
-      if (typeof(component) === 'number') {
+      if (componentType === 'numeric') {
         state[componentName] = component;
       } else {
         state[componentName] = value;
@@ -41,7 +41,7 @@ export default class App extends React.Component {
             minValue={0}
             step={0.1}
             value={this.state.range1}
-            onChange={this.handleValuesChange('range1')}
+            onChange={this.handleValuesChange('range1', 'range')}
           />
         </div>
         <div className="col-lg-2">
@@ -50,7 +50,7 @@ export default class App extends React.Component {
             value={this.state.range1}
             step={0.1}
             precision={1}
-            onChange={this.handleValuesChange('range1')}
+            onChange={this.handleValuesChange('range1', 'numeric')}
             format={this.toNumber}
           />
         </div>
@@ -63,7 +63,7 @@ export default class App extends React.Component {
             minValue={0}
             step={0.1}
             value={this.state.range2}
-            onChange={this.handleValuesChange('range2')}
+            onChange={this.handleValuesChange('range2', 'range')}
           />
         </div>
         <div className="col-lg-2">
@@ -72,7 +72,7 @@ export default class App extends React.Component {
             value={this.state.range2}
             step={0.1}
             precision={1}
-            onChange={this.handleValuesChange('range2')}
+            onChange={this.handleValuesChange('range2', 'numeric')}
             format={this.toNumber}
           />
         </div>
