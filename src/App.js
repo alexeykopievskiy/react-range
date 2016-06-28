@@ -17,9 +17,13 @@ export default class App extends React.Component {
   }
 
   handleValuesChange(componentName) {
-    return (value) => {
+    return (component, value) => {
       const state = {}
-      state[componentName] = value;
+      if (typeof(component) === 'number') {
+        state[componentName] = component;
+      } else {
+        state[componentName] = value;
+      }
       this.setState(state);
     }
   }
@@ -36,19 +40,11 @@ export default class App extends React.Component {
             maxValue={100}
             minValue={0}
             step={0.1}
-            defaultValue={this.state.range1}
+            value={this.state.range1}
             onChange={this.handleValuesChange('range1')}
           />
         </div>
         <div className="col-lg-2">
-          <NumericInput
-            className="form-control"
-            value={this.state.range1}
-            step={0.1}
-            precision={1}
-            onChange={this.handleValuesChange('range1')}
-            format={this.toNumber()}
-          />
         </div>
         <div className="block-container">
           Item 1: {this.state.range1}
@@ -58,7 +54,7 @@ export default class App extends React.Component {
             maxValue={100}
             minValue={0}
             step={0.1}
-            defaultValue={this.state.range2}
+            value={this.state.range2}
             onChange={this.handleValuesChange('range2')}
           />
         </div>
@@ -69,7 +65,7 @@ export default class App extends React.Component {
             step={0.1}
             precision={1}
             onChange={this.handleValuesChange('range2')}
-            format={this.toNumber()}
+            format={this.toNumber}
           />
         </div>
       </div>
