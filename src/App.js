@@ -36,14 +36,14 @@ export default class App extends React.Component {
             maxValue={100}
             minValue={0}
             step={0.1}
-            defaultValue={this.state.value}
+            defaultValue={this.state.range1}
             onChange={this.handleValuesChange('range1')}
           />
         </div>
         <div className="col-lg-2">
           <NumericInput
             className="form-control"
-            value={this.state.value}
+            value={this.state.range1}
             step={0.1}
             precision={1}
             onChange={this.handleValuesChange('range1')}
@@ -51,21 +51,21 @@ export default class App extends React.Component {
           />
         </div>
         <div className="block-container">
-          Item 1: {this.state.value}
+          Item 1: {this.state.range1}
         </div>
         <div className="col-lg-10">
           <InputRange
             maxValue={100}
             minValue={0}
             step={0.1}
-            defaultValue={this.state.backValue}
+            defaultValue={this.state.range2}
             onChange={this.handleValuesChange('range2')}
           />
         </div>
         <div className="col-lg-2">
           <NumericInput
             className="form-control"
-            value={this.state.backValue}
+            value={this.state.range2}
             step={0.1}
             precision={1}
             onChange={this.handleValuesChange('range2')}
