@@ -45,6 +45,14 @@ export default class App extends React.Component {
           />
         </div>
         <div className="col-lg-2">
+          <NumericInput
+            className="form-control"
+            value={this.state.range1}
+            step={0.1}
+            precision={1}
+            onChange={this.handleValuesChange('range1')}
+            format={this.toNumber}
+          />
         </div>
         <div className="block-container">
           Item 1: {this.state.range1}
