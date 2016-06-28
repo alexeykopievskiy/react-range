@@ -8,18 +8,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleValuesChange = this.handleValuesChange.bind(this);
+
     this.state = {
-      value: 5,
-      backValue: 95
+      range1: 5,
+      range2: 95
     };
   }
 
-  handleValuesChange(component, value) {
-    console.log(this.state.value)
-    this.setState({
-      value: ((value * 10) / 10),
-      backValue: (((100 - value) * 10) / 10)
-    });
+  handleValuesChange(componentName) {
+    return (value) => {
+      const state = {}
+      state[componentName] = value;
+      this.setState(state);
+    }
   }
 
   toNumber(number) {
@@ -35,7 +37,7 @@ export default class App extends React.Component {
             minValue={0}
             step={0.1}
             defaultValue={this.state.value}
-            onChange={this.handleValuesChange.bind(this)}
+            onChange={this.handleValuesChange('range1')}
           />
         </div>
         <div className="col-lg-2">
@@ -44,7 +46,7 @@ export default class App extends React.Component {
             value={this.state.value}
             step={0.1}
             precision={1}
-            onChange={this.handleValuesChange.bind(this)}
+            onChange={this.handleValuesChange('range1')}
             format={this.toNumber()}
           />
         </div>
@@ -57,7 +59,7 @@ export default class App extends React.Component {
             minValue={0}
             step={0.1}
             defaultValue={this.state.backValue}
-            onChange={this.handleValuesChange.bind(this)}
+            onChange={this.handleValuesChange('range2')}
           />
         </div>
         <div className="col-lg-2">
@@ -66,7 +68,7 @@ export default class App extends React.Component {
             value={this.state.backValue}
             step={0.1}
             precision={1}
-            onChange={this.handleValuesChange.bind(this)}
+            onChange={this.handleValuesChange('range2')}
             format={this.toNumber()}
           />
         </div>
